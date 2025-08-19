@@ -2,7 +2,7 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" id="viewportMeta">
     <title>উদ্ভিদের চলন - Class 01</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');
@@ -31,8 +31,8 @@
         th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
         th { background-color: var(--table-header-bg); color: var(--table-header-text); font-weight: 600; }
         .controls-wrapper { max-width: 900px; margin: 20px auto; padding: 15px; background-color: var(--container-bg); border-radius: 10px; box-shadow: 0 4px 12px var(--box-shadow-color); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-        .theme-buttons button { padding: 8px 15px; border: 1px solid var(--nav-button-border); background-color: var(--nav-button-bg); color: var(--nav-button-text); border-radius: 5px; cursor: pointer; font-family: 'Hind Siliguri', sans-serif; font-weight: 600; transition: all 0.2s; }
-        .theme-buttons button:hover { opacity: 0.8; }
+        .theme-buttons button, #toggleViewBtn { padding: 8px 15px; border: 1px solid var(--nav-button-border); background-color: var(--nav-button-bg); color: var(--nav-button-text); border-radius: 5px; cursor: pointer; font-family: 'Hind Siliguri', sans-serif; font-weight: 600; transition: all 0.2s; }
+        .theme-buttons button:hover, #toggleViewBtn:hover { opacity: 0.8; }
         .dark-mode-toggle { display: flex; align-items: center; gap: 10px; }
         .switch { position: relative; display: inline-block; width: 60px; height: 34px; }
         .switch input { opacity: 0; width: 0; height: 0; }
@@ -69,6 +69,8 @@
         <button data-theme-name="ocean">Ocean</button>
         <button data-theme-name="sunset">Sunset</button>
     </div>
+    <!-- === নতুন ডেস্কটপ মোড বাটন === -->
+    <button id="toggleViewBtn">ডেস্কটপ মোড</button>
     <div class="dark-mode-toggle">
         <span>দিন/রাত</span>
         <label class="switch">
@@ -196,6 +198,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // --- থিম এবং ডার্ক মোড লজিক ---
         const themeButtons = document.querySelectorAll('.theme-buttons button');
         const darkModeToggle = document.getElementById('darkModeToggle');
         const body = document.body;
@@ -208,6 +211,7 @@
         themeButtons.forEach(button => { button.addEventListener('click', () => { applyTheme(button.dataset.themeName); }); });
         darkModeToggle.addEventListener('change', () => { applyMode(darkModeToggle.checked ? 'dark' : 'light'); });
 
+        // --- স্ক্রল বাটন লজিক ---
         const scrollToTopBtn = document.getElementById('scrollToTopBtn');
         const scrollToBottomBtn = document.getElementById('scrollToBottomBtn');
         window.addEventListener('scroll', () => {
@@ -220,27 +224,45 @@
         scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
         scrollToBottomBtn.addEventListener('click', () => { window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); });
 
+        // --- ডিজিটাল ঘড়ি ---
         const clockElement = document.getElementById('digital-clock');
         function updateClock() {
             if(clockElement) {
                 const now = new Date();
-                const options = {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit',
-                    hour12: true,
-                    timeZone: 'Asia/Kolkata'
-                };
+                const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true, timeZone: 'Asia/Kolkata' };
                 clockElement.textContent = now.toLocaleTimeString('en-GB', options);
             }
         }
         updateClock();
         setInterval(updateClock, 1000);
 
+        // --- কপিরাইট বছর ---
         const yearSpan = document.getElementById('copyright-year');
-        if(yearSpan) {
-            yearSpan.textContent = new Date().getFullYear();
+        if(yearSpan) { yearSpan.textContent = new Date().getFullYear(); }
+
+        // --- নতুন: ডেস্কটপ/মোবাইল মোড টগল লজিক ---
+        const toggleBtn = document.getElementById('toggleViewBtn');
+        const viewportMeta = document.getElementById('viewportMeta');
+        let isDesktopView = localStorage.getItem('viewMode') === 'desktop';
+
+        function applyViewMode() {
+            if (isDesktopView) {
+                viewportMeta.setAttribute('content', 'width=1280');
+                toggleBtn.textContent = 'মোবাইল মোড';
+            } else {
+                viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1.0');
+                toggleBtn.textContent = 'ডেস্কটপ মোড';
+            }
         }
+        
+        toggleBtn.addEventListener('click', () => {
+            isDesktopView = !isDesktopView; // অবস্থা পরিবর্তন করুন
+            localStorage.setItem('viewMode', isDesktopView ? 'desktop' : 'mobile');
+            applyViewMode();
+        });
+
+        // পেজ লোড হওয়ার সময় সঠিক মোড প্রয়োগ করুন
+        applyViewMode();
     });
 </script>
 </body>
