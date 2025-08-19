@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>উদ্ভিদের চলন (PYQ) - Class 3</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+        :root { --bg-color: #f0f2f5; --container-bg: #ffffff; --text-color: #333333; --heading-color-1: #d81b60; --heading-color-2: #004d40; --heading-color-3: #1a237e; --accent-color: #c2185b; --blockquote-bg: #e3f2fd; --blockquote-border: #2196f3; --table-header-bg: #004d40; --table-header-text: #ffffff; --nav-button-bg: #fff; --nav-button-text: #333; --nav-button-border: #ccc; --nav-active-bg: #d81b60; --box-shadow-color: rgba(0, 0, 0, 0.1); }
+        [data-theme="forest"] { --bg-color: #f0f4f0; --container-bg: #ffffff; --text-color: #2c3e50; --heading-color-1: #27ae60; --heading-color-2: #16a085; --heading-color-3: #2c3e50; --accent-color: #e67e22; --blockquote-bg: #e8f5e9; --blockquote-border: #27ae60; --table-header-bg: #27ae60; }
+        [data-theme="ocean"] { --bg-color: #eef5ff; --container-bg: #ffffff; --text-color: #34495e; --heading-color-1: #2980b9; --heading-color-2: #3498db; --heading-color-3: #1f618d; --accent-color: #e74c3c; --blockquote-bg: #e4f1fe; --blockquote-border: #3498db; --table-header-bg: #2980b9; }
+        [data-theme="sunset"] { --bg-color: #fff3e0; --container-bg: #ffffff; --text-color: #4e342e; --heading-color-1: #e65100; --heading-color-2: #f57c00; --heading-color-3: #d84315; --accent-color: #bf360c; --blockquote-bg: #fff8e1; --blockquote-border: #f57c00; --table-header-bg: #e65100; }
+        .dark-mode { --bg-color: #121212; --container-bg: #1e1e1e; --text-color: #e0e0e0; --heading-color-1: #bb86fc; --heading-color-2: #03dac6; --heading-color-3: #cf6679; --accent-color: #f48fb1; --blockquote-bg: #2a2a2a; --blockquote-border: #03dac6; --table-header-bg: #3700b3; --nav-button-bg: #2c2c2c; --nav-button-text: #e0e0e0; --nav-button-border: #555; --nav-active-bg: #bb86fc; --box-shadow-color: rgba(255, 255, 255, 0.05); }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Hind Siliguri', sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.8; margin: 0; padding: 20px; transition: background-color 0.3s, color 0.3s; }
+        header { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 20px 0; }
+        .logo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; box-shadow: 0 4px 12px var(--box-shadow-color); }
+        .container { max-width: 900px; margin: 20px auto; background-color: var(--container-bg); padding: 30px 40px; border-radius: 12px; box-shadow: 0 4px 12px var(--box-shadow-color); transition: background-color 0.3s; }
+        h1, h2, h3, h4 { border-bottom: 2px solid #e0e0e0; padding-bottom: 10px; margin-top: 30px; }
+        h1 { text-align: center; font-size: 2.2em; color: var(--heading-color-1); border-bottom: none; margin: 0; }
+        h2 { font-size: 2em; color: var(--heading-color-2); }
+        h3, h4 { font-size: 1.6em; color: var(--heading-color-3); }
+        p { font-size: 1.1em; margin-bottom: 5px; }
+        strong { color: var(--accent-color); font-weight: 600; }
+        blockquote { background-color: var(--blockquote-bg); border-left: 5px solid var(--blockquote-border); margin: 15px 0; padding: 10px 20px; font-size: 1.1em; border-radius: 5px; }
+        blockquote strong { color: var(--heading-color-2); }
+        ol, ul { padding-left: 20px; }
+        li { margin-bottom: 25px; padding-left: 10px; }
+        .options-list { list-style-type: upper-alpha; padding-left: 40px; }
+        .options-list li { margin-bottom: 5px; }
+        .controls-wrapper { max-width: 900px; margin: 20px auto; padding: 15px; background-color: var(--container-bg); border-radius: 10px; box-shadow: 0 4px 12px var(--box-shadow-color); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .theme-buttons button { padding: 8px 15px; border: 1px solid var(--nav-button-border); background-color: var(--nav-button-bg); color: var(--nav-button-text); border-radius: 5px; cursor: pointer; font-family: 'Hind Siliguri', sans-serif; font-weight: 600; transition: all 0.2s; }
+        .theme-buttons button:hover { opacity: 0.8; }
+        .dark-mode-toggle { display: flex; align-items: center; gap: 10px; }
+        .switch { position: relative; display: inline-block; width: 60px; height: 34px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--heading-color-1); }
+        input:checked + .slider:before { transform: translateX(26px); }
+        .digital-clock { font-family: 'Courier New', Courier, monospace; font-size: 1.2em; font-weight: bold; padding: 8px 15px; background-color: var(--blockquote-bg); border: 1px solid var(--blockquote-border); border-radius: 5px; color: var(--heading-color-1); }
+        .navigation { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid #eee; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .nav-button { display: inline-block; padding: 10px 15px; border: 1px solid var(--nav-button-border); border-radius: 5px; text-decoration: none; color: var(--nav-button-text); background-color: var(--nav-button-bg); transition: background-color 0.3s, color 0.3s; font-weight: 500; }
+        .nav-button:hover { background-color: #e0e0e0; }
+        .nav-button.active { background-color: var(--nav-active-bg); color: white; border-color: var(--nav-active-bg); }
+        .nav-button.disabled { pointer-events: none; opacity: 0.5; }
+        .home-button { background-color: #1e88e5; color: white; border-color: #1e88e5; }
+        .home-button:hover { background-color: #1565c0; }
+        footer { text-align: center; margin-top: 40px; padding: 20px; font-size: 0.9em; color: var(--text-color); opacity: 0.8; }
+        .scroll-button { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; border-radius: 50%; background-color: var(--heading-color-1); color: white; border: none; font-size: 24px; cursor: pointer; display: none; justify-content: center; align-items: center; box-shadow: 0 4px 8px rgba(0,0,0,0.2); z-index: 1000; transition: opacity 0.3s, visibility 0.3s; }
+        #scrollToBottomBtn { bottom: 80px; background-color: var(--heading-color-2); }
+        .scroll-button:hover { opacity: 0.8; }
+    </style>
+</head>
+<body data-theme="default">
+
+    <header>
+        <img src="../images/logo.jpg" alt="Logo" class="logo">
+        <h1>উদ্ভিদের চলন (Plant Movement) - PYQ</h1>
+    </header>
+
+    <div class="controls-wrapper">
+        <div id="digital-clock" class="digital-clock"></div>
+        <div class="theme-buttons">
+            <button data-theme-name="default">Default</button>
+            <button data-theme-name="forest">Forest</button>
+            <button data-theme-name="ocean">Ocean</button>
+            <button data-theme-name="sunset">Sunset</button>
+        </div>
+        <div class="dark-mode-toggle">
+            <span>দিন/রাত</span>
+            <label class="switch">
+                <input type="checkbox" id="darkModeToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>CLASS NO: 3</h2>
+        <ol>
+            <li>
+                <p>লজ্জাবতী লতায় কী প্রকার চলন দেখা যায়?</p>
+                <ol class="options-list">
+                    <li>থার্মোন্যাস্টি</li>
+                    <li>সিসমোন্যাস্টি</li>
+                    <li>নিকটিন্যাস্টি</li>
+                    <li>কেমোন্যাস্টি</li>
+                </ol>
+                <blockquote><strong>উত্তর: (b) সিসমোন্যাস্টি।</strong><br><small><i>ব্যাখ্যা: লজ্জাবতী লতাকে স্পর্শ করলে বা আঘাত করলে এর পাতাগুলি তৎক্ষণাৎ মুড়ে যায়। এই প্রকার চলন স্পর্শ বা কম্পনের মতো উদ্দীপনার তীব্রতা দ্বারা নিয়ন্ত্রিত হয়, উদ্দীপকের গতিপথ দ্বারা নয়। এই ঘটনাকে সিসমোন্যাস্টি চলন বলে।</i></small></blockquote>
+            </li>
+            <li>
+                <p>গমনে সক্ষম উদ্ভিদ কোনটি?</p>
+                <ol class="options-list">
+                    <li>ভলভক্স</li>
+                    <li>মিউকর</li>
+                    <li>ডায়াটম</li>
+                    <li>লোহিত শৈবাল</li>
+                </ol>
+                <blockquote><strong>উত্তর: (a) ভলভক্স (এবং c) ডায়াটম)।</strong><br><small><i>ব্যাখ্যা: ভলভক্স (Volvox) হল এক প্রকার কলোনি গঠনকারী সবুজ শৈবাল। এর প্রতিটি কোষে ফ্ল্যাজেলা থাকে, যার সাহায্যে এরা সাঁতার কেটে স্থান পরিবর্তন করতে পারে, অর্থাৎ গমনে সক্ষম। ডায়াটমও গ্লাইডিং পদ্ধতিতে স্থান পরিবর্তন করতে পারে। প্রদত্ত বিকল্পগুলির মধ্যে ভলভক্স একটি উৎকৃষ্ট উদাহরণ।</i></small></blockquote>
+            </li>
+            <li>
+                <p>সূর্যমুখী উদ্ভিদের ফুল কার প্রভাবে ফোটে?</p>
+                <ol class="options-list">
+                    <li>আলোর প্রকৃতি</li>
+                    <li>আলোর তীব্রতা</li>
+                    <li>আলোর অভিমুখ</li>
+                    <li>অন্ধকার পরিবেশ</li>
+                </ol>
+                <blockquote><strong>উত্তর: (b) আলোর তীব্রতা।</strong><br><small><i>ব্যাখ্যা: সূর্যমুখী ফুলের প্রস্ফুটন (ফোটা) আলোর তীব্রতার উপর নির্ভরশীল। এটি এক প্রকার ফোটোন্যাস্টিক চলন। দিনের বেলায় বেশি আলোর তীব্রতায় ফুল ফোটে এবং রাতের বেলায় কম আলোতে বন্ধ হয়ে যায়। (উল্লেখ্য, সূর্যের দিকে মুখ ঘোরানো হলো ফোটোট্রপিক চলন)।</i></small></blockquote>
+            </li>
+            <li>
+                <p>রাত্রিবেলায় ফুল ফোটে-এটি কী প্রকার চলন পদ্ধতি?</p>
+                <ol class="options-list">
+                    <li>ফোটোন্যাস্টি</li>
+                    <li>থার্মোন্যাস্টি</li>
+                    <li>নেগেটিভ ফোটোট্রপিক</li>
+                    <li>সিসমোন্যাস্টি</li>
+                </ol>
+                <blockquote><strong>উত্তর: (a) ফোটোন্যাস্টি।</strong><br><small><i>ব্যাখ্যা: কিছু ফুল যেমন জুঁই, হাসনুহানা কম আলোর তীব্রতায় অর্থাৎ রাত্রিবেলায় ফোটে। এই প্রকার চলন আলোর তীব্রতা দ্বারা নিয়ন্ত্রিত হয়, তাই এটি ফোটোন্যাস্টিক চলনের উদাহরণ।</i></small></blockquote>
+            </li>
+            <li>
+                <p>কোনটি কেমোন্যাস্টি চলনের উদাহরণ?</p>
+                <ol class="options-list">
+                    <li>বিটপ অঙ্গের বক্রতা</li>
+                    <li>মূলের বৃদ্ধি</li>
+                    <li>ড্রসেরা উদ্ভিদের পতঙ্গ শিকার</li>
+                    <li>সূর্যমুখী ফুল ফোটা</li>
+                </ol>
+                <blockquote><strong>উত্তর: (c) ড্রসেরা উদ্ভিদের পতঙ্গ শিকার।</strong><br><small><i>ব্যাখ্যা: সূর্যশিশির (ড্রসেরা) বা কলসপত্রীর মতো পতঙ্গভুক উদ্ভিদরা পতঙ্গের দেহের প্রোটিনের সংস্পর্শে এলে তাদের পাতা বা কর্ষিকা বেঁকে গিয়ে পতঙ্গকে আবদ্ধ করে। এটি রাসায়নিক পদার্থের (প্রোটিন) প্রভাবে ঘটে, তাই এটি কেমোন্যাস্টি চলন।</i></small></blockquote>
+            </li>
+            <li>
+                <p>গমনক্ষম শৈবালের গমন অঙ্গ কোনটি?</p>
+                <ol class="options-list">
+                    <li>সিলিয়া</li>
+                    <li>ফ্লাজেলা</li>
+                    <li>চক্ষুবিন্দু</li>
+                    <li>কোশদেহ</li>
+                </ol>
+                <blockquote><strong>উত্তর: (b) ফ্লাজেলা।</strong><br><small><i>ব্যাখ্যা: ক্ল্যামাইডোমোনাস, ভলভক্স ইত্যাদি গমনক্ষম শৈবালের প্রধান গমন অঙ্গ হল ফ্লাজেলা। ফ্লাজেলার সঞ্চালনের মাধ্যমে এরা জলে স্থান পরিবর্তন করে।</i></small></blockquote>
+            </li>
+            <li>
+                <p>কোন প্রকার চলনে জীব স্থান পরিবর্তন করে?</p>
+                <ol class="options-list">
+                    <li>ট্রপিক</li>
+                    <li>ট্যাকটিক</li>
+                    <li>ন্যাস্টিক</li>
+                    <li>সবগুলি</li>
+                </ol>
+                <blockquote><strong>উত্তর: (b) ট্যাকটিক।</strong><br><small><i>ব্যাখ্যা: ট্যাকটিক চলনে বাহ্যিক উদ্দীপকের প্রভাবে উদ্ভিদ বা উদ্ভিদ কোষের সামগ্রিক স্থান পরিবর্তন ঘটে। একে গমনও বলা হয়। যেমন - ভলভক্সের আলোর দিকে গমন। ট্রপিক ও ন্যাস্টিক চলনে কেবল অঙ্গ সঞ্চালন হয়, স্থান পরিবর্তন হয় না।</i></small></blockquote>
+            </li>
+            <li>
+                <p>টিউলিপ ফুল কখন ফোটে?</p>
+                <ol class="options-list">
+                    <li>যখন তাপমাত্রা বাড়ে</li>
+                    <li>যখন আলোর তীব্রতা বাড়ে</li>
+                    <li>যখন তাপমাত্রা কমে</li>
+                    <li>যখন আলোর তীব্রতা কমে</li>
+                </ol>
+                <blockquote><strong>উত্তর: (a) যখন তাপমাত্রা বাড়ে।</strong><br><small><i>ব্যাখ্যা: টিউলিপ ফুলের প্রস্ফুটন উষ্ণতা বা তাপমাত্রার তীব্রতার উপর নির্ভরশীল। বেশি উষ্ণতায় ফুল ফোটে এবং কম উষ্ণতায় বন্ধ হয়ে যায়। এই প্রকার চলনকে থার্মোন্যাস্টি চলন বলে।</i></small></blockquote>
+            </li>
+            <li>
+                <p>পরিবেশের বিভিন্ন ধরনের পরিবর্তন শনাক্ত করে, সেই অনুযায়ী জীবের সাড়া প্রদানের ক্ষমতাই হল-</p>
+                <ol class="options-list">
+                    <li>উপযোজন</li>
+                    <li>উদ্দীপক</li>
+                    <li>সংবেদনশীলতা</li>
+                    <li>আত্তীকরণ</li>
+                </ol>
+                <blockquote><strong>উত্তর: (c) সংবেদনশীলতা।</strong><br><small><i>ব্যাখ্যা: পরিবেশের পরিবর্তন (যেমন - আলো, তাপ, স্পর্শ) শনাক্ত করে সেই অনুযায়ী প্রতিক্রিয়া বা সাড়া দেওয়ার ক্ষমতাকে জীবের সংবেদনশীলতা বা উত্তেজিতা বলে।</i></small></blockquote>
+            </li>
+            <li>
+                <p>উদ্দীপক হল এক ধরনের-</p>
+                <ol class="options-list">
+                    <li>সংবেদন</li>
+                    <li>প্রত্যক্ষণ</li>
+                    <li>সাড়া</li>
+                    <li>শক্তি</li>
+                </ol>
+                <blockquote><strong>উত্তর: (d) শক্তি।</strong><br><small><i>ব্যাখ্যা: উদ্দীপক হলো পরিবেশের এমন কোনো পরিবর্তন বা শক্তি (যেমন - আলোক শক্তি, তাপ শক্তি, যান্ত্রিক শক্তি) যা জীবদেহে প্রতিক্রিয়া সৃষ্টি করে।</i></small></blockquote>
+            </li>
+            <li>
+                <p>উদ্দীপকের তীব্রতা দ্বারা নিয়ন্ত্রিত চলনকে বলা হয়-</p>
+                <ol class="options-list">
+                    <li>ট্রপিক চলন</li>
+                    <li>ট্যাকটিক চলন</li>
+                    <li>ন্যাস্টিক চলন</li>
+                    <li>কেমোট্যাকসিস</li>
+                </ol>
+                <blockquote><strong>উত্তর: (c) ন্যাস্টিক চলন।</strong><br><small><i>ব্যাখ্যা: যে বক্র চলন উদ্দীপকের গতিপথ দ্বারা নিয়ন্ত্রিত না হয়ে উদ্দীপকের তীব্রতা দ্বারা নিয়ন্ত্রিত হয়, তাকে ন্যাস্টিক চলন বলে। যেমন - পদ্মফুলের ফোটা।</i></small></blockquote>
+            </li>
+            <li>
+                <p>একটি অভ্যন্তরীণ উদ্দীপনার উদাহরণ হল-</p>
+                <ol class="options-list">
+                    <li>কোশের রসস্ফীতিজনিত চাপের পরিবর্তন</li>
+                    <li>আলোর তীব্রতার পরিবর্তন</li>
+                    <li>অভিকর্ষ</li>
+                    <li>স্পর্শ</li>
+                </ol>
+                <blockquote><strong>উত্তর: (a) কোশের রসস্ফীতিজনিত চাপের পরিবর্তন।</strong><br><small><i>ব্যাখ্যা: আলো, অভিকর্ষ, স্পর্শ হলো বাহ্যিক উদ্দীপক। অন্যদিকে, হরমোন, কোশের রসস্ফীতি চাপের পরিবর্তন ইত্যাদি হলো অভ্যন্তরীণ উদ্দীপক যা জীবদেহের ভিতর থেকেই উৎপন্ন হয়।</i></small></blockquote>
+            </li>
+            <li>
+                <p>জগদীশ চন্দ্র বসু বনচাঁড়াল ছাড়া অপর কোন্ উদ্ভিদ নিয়ে কাজ করেন?</p>
+                <ol class="options-list">
+                    <li>লজ্জাবতী</li>
+                    <li>সূর্যমুখী</li>
+                    <li>টিউলিপ</li>
+                    <li>কোনোটিই নয়</li>
+                </ol>
+                <blockquote><strong>উত্তর: (a) লজ্জাবতী।</strong><br><small><i>ব্যাখ্যা: আচার্য জগদীশ চন্দ্র বসু উদ্ভিদের সংবেদনশীলতা প্রমাণ করার জন্য বনচাঁড়াল এবং লজ্জাবতী উভয় উদ্ভিদ নিয়েই বিস্তারিত গবেষণা করেছিলেন।</i></small></blockquote>
+            </li>
+            <li>
+                <p>দিনের আলোয় পদ্মফুলের প্রস্ফুটন একপ্রকার-</p>
+                <ol class="options-list">
+                    <li>ন্যাস্টিক চলন</li>
+                    <li>ট্যাকটিক চলন</li>
+                    <li>ট্রপিক চলন</li>
+                    <li>প্রকরণ চলন</li>
+                </ol>
+                <blockquote><strong>উত্তর: (a) ন্যাস্টিক চলন।</strong><br><small><i>ব্যাখ্যা: দিনের বেলায় আলোর তীব্রতা বেশি থাকায় পদ্মফুল ফোটে এবং রাতে আলোর তীব্রতা কমে গেলে বন্ধ হয়ে যায়। যেহেতু এই চলন আলোর তীব্রতার উপর নির্ভরশীল, তাই এটি ফোটোন্যাস্টিক চলন, যা এক প্রকার ন্যাস্টিক চলন।</i></small></blockquote>
+            </li>
+            <li>
+                <p>অভিকর্ষের গতিপথ অনুসারে নিয়ন্ত্রিত উদ্ভিদ-অঙ্গের চলনকে বলা হয়-</p>
+                <ol class="options-list">
+                    <li>হাইড্রোট্রপিক চলন</li>
+                    <li>ফোটোট্রপিক চলন</li>
+                    <li>জিওট্রপিক চলন</li>
+                    <li>কেমোট্রপিক চলন</li>
+                </ol>
+                <blockquote><strong>উত্তর: (c) জিওট্রপিক চলন।</strong><br><small><i>ব্যাখ্যা: উদ্ভিদ অঙ্গের চলন যখন পৃথিবীর অভিকর্ষ বলের গতিপথ অনুসারে হয়, তখন তাকে জিওট্রপিক চলন বলে। যেমন - মূলের মাটির দিকে বৃদ্ধি (অনুকূল জিওট্রপিক) এবং কান্ডের উপরের দিকে বৃদ্ধি (প্রতিকূল জিওট্রপিক)।</i></small></blockquote>
+            </li>
+            <li>
+                <p>বহিস্থ উদ্দীপক দ্বারা নিয়ন্ত্রিত উদ্ভিদের সামগ্রিক চলন বা গমনকে বলে-</p>
+                <ol class="options-list">
+                    <li>হাইড্রোট্রপিক চলন</li>
+                    <li>জিওট্রপিক চলন</li>
+                    <li>কেমোট্রপিক চলন</li>
+                    <li>ট্যাকটিক চলন</li>
+                </ol>
+                <blockquote><strong>উত্তর: (d) ট্যাকটিক চলন।</strong><br><small><i>ব্যাখ্যা: বাহ্যিক উদ্দীপকের প্রভাবে যখন সমগ্র উদ্ভিদদেহ বা কোষ স্থান পরিবর্তন করে, তখন তাকে ট্যাকটিক চলন বা গমন বলে। যেমন - শৈবালের আলোর দিকে গমন।</i></small></blockquote>
+            </li>
+            <li>
+                <p>আলোক উদ্দীপকের প্রভাবে সমগ্র উদ্ভিদ বা উদ্ভিদ অঙ্গের স্থান পরিবর্তনকে বলে-</p>
+                <ol class="options-list">
+                    <li>ফোটোন্যাস্টিক</li>
+                    <li>স্বতঃস্ফূর্ত চলন</li>
+                    <li>ফোটোট্রপিক চলন</li>
+                    <li>ফোটোট্যাকটিক চলন</li>
+                </ol>
+                <blockquote><strong>উত্তর: (d) ফোটোট্যাকটিক চলন।</strong><br><small><i>ব্যাখ্যা: আলোর প্রভাবে যখন সমগ্র জীবদেহ বা কোষ স্থান পরিবর্তন করে (গমন), তখন তাকে ফোটোট্যাকটিক চলন বলে। যেমন - ক্ল্যামাইডোমোনাসের আলোর উৎসের দিকে গমন।</i></small></blockquote>
+            </li>
+            <li>
+                <p>উদ্ভিদ-অঙ্গের বক্র চলন যখন বাহ্যিক উদ্দীপকের গতিপথ অনুসারে হয় তখন তাকে বলে-</p>
+                <ol class="options-list">
+                    <li>ট্যাকটিক চলন</li>
+                    <li>ট্রপিক চলন</li>
+                    <li>ন্যাস্টিক চলন</li>
+                    <li>অটোনমিক চলন</li>
+                </ol>
+                <blockquote><strong>উত্তর: (b) ট্রপিক চলন।</strong><br><small><i>ব্যাখ্যা: উদ্ভিদ অঙ্গের যে বক্র চলন বাহ্যিক উদ্দীপকের উৎস বা গতিপথ দ্বারা নিয়ন্ত্রিত হয়, তাকে ট্রপিক বা দিক্‌নির্ণীত চলন বলে। যেমন - কান্ডের আলোর দিকে বেঁকে যাওয়া।</i></small></blockquote>
+            </li>
+            <li>
+                <p>ন্যাস্টিক চলন যখন কোনো রাসায়নিক বস্তুর প্রভাবে হয় তখন তাকে বলা হয়-</p>
+                <ol class="options-list">
+                    <li>থার্মোন্যাস্টিক চলন</li>
+                    <li>নিকটিন্যাস্টিক চলন</li>
+                    <li>কেমোন্যাস্টিক চলন</li>
+                    <li>সিমোন্যাস্টিক চলন</li>
+                </ol>
+                <blockquote><strong>উত্তর: (c) কেমোন্যাস্টিক চলন।</strong><br><small><i>ব্যাখ্যা: কোনো রাসায়নিক পদার্থের তীব্রতার প্রভাবে যখন ন্যাস্টিক চলন ঘটে, তখন তাকে কেমোন্যাস্টিক চলন বলে। যেমন - পতঙ্গভুক উদ্ভিদের পতঙ্গ শিকার।</i></small></blockquote>
+            </li>
+            <li>
+                <p>সূর্যশিশির ও ডায়োনিয়া উদ্ভিদের ক্ষেত্রে পতঙ্গকে ঘিরে ফেলে খাদ্যরূপে গ্রহণ হল-</p>
+                <ol class="options-list">
+                    <li>সিমোন্যাস্টিক চলন</li>
+                    <li>থার্মোন্যাস্টিক চলন</li>
+                    <li>ফোটোন্যাস্টিক চলন</li>
+                    <li>কেমোন্যাস্টিক চলন</li>
+                </ol>
+                <blockquote><strong>উত্তর: (d) কেমোন্যাস্টিক চলন।</strong><br><small><i>ব্যাখ্যা: পতঙ্গভুক উদ্ভিদ সূর্যশিশির (ড্রসেরা) বা ডায়োনিয়ার পাতা পতঙ্গের দেহের প্রোটিনের সংস্পর্শে এলে পাতার কর্ষিকাগুলি বেঁকে গিয়ে পতঙ্গকে আবদ্ধ করে। এটি রাসায়নিক পদার্থের প্রভাবে ঘটে বলে একে কেমোন্যাস্টিক চলন বলে।</i></small></blockquote>
+            </li>
+            <li>
+                <p>লজ্জাবতী লতা-কে স্পর্শ করলে পাতার পত্রকগুলি তৎক্ষণাৎ মুড়ে যায়, একে বলে-</p>
+                <ol class="options-list">
+                    <li>নিকটিন্যাস্টিক চলন</li>
+                    <li>সিমোন্যাস্টিক চলন</li>
+                    <li>হাইপোন্যাস্টিক চলন</li>
+                    <li>কেমোন্যাস্টিক চলন</li>
+                </ol>
+                <blockquote><strong>উত্তর: (b) সিমোন্যাস্টিক চলন।</strong><br><small><i>ব্যাখ্যা: স্পর্শ বা আঘাতের মতো যান্ত্রিক উদ্দীপনার ফলে লজ্জাবতী পাতার পত্রকগুলি নুয়ে পড়ে। এই প্রকার চলনকে সিমোন্যাস্টিক বা সিসমোন্যাস্টিক চলন বলা হয়।</i></small></blockquote>
+            </li>
+            <li>
+                <p>জুঁই ফুলের পাপড়ি রাতের বেলায় প্রস্ফুটিত হয়-এটি কোন প্রকার চলন?</p>
+                <ol class="options-list">
+                    <li>ফোটোন্যাস্টিক চলন</li>
+                    <li>থার্মোন্যাস্টিক চলন</li>
+                    <li>কেমোন্যাস্টিক চলন</li>
+                    <li>সিমোন্যাস্টি চলন</li>
+                </ol>
+                <blockquote><strong>উত্তর: (a) ফোটোন্যাস্টিক চলন।</strong><br><small><i>ব্যাখ্যা: জুঁই ফুল কম আলোর তীব্রতায় অর্থাৎ রাতে ফোটে এবং দিনের বেশি আলোতে বন্ধ হয়ে যায়। আলোর তীব্রতা দ্বারা নিয়ন্ত্রিত এই চলন হলো ফোটোন্যাস্টিক চলন।</i></small></blockquote>
+            </li>
+            <li>
+                <p>উদ্ভিদ কান্ডের আলোর দিকে বৃদ্ধি পায়, এটি একপ্রকার-</p>
+                <ol class="options-list">
+                    <li>ফোটোট্রপিক চলন</li>
+                    <li>জিওট্রপিক চলন</li>
+                    <li>হাইড্রোট্রপিক চলন</li>
+                    <li>কেমোট্রপিক চলন</li>
+                </ol>
+                <blockquote><strong>উত্তর: (a) ফোটোট্রপিক চলন।</strong><br><small><i>ব্যাখ্যা: উদ্ভিদ কান্ডের চলন আলোর উৎস বা গতিপথ দ্বারা নিয়ন্ত্রিত হয়। কান্ড সবসময় আলোর উৎসের দিকে বৃদ্ধি পায়, তাই এটি অনুকূল আলোকবৃত্তীয় বা পজিটিভ ফোটোট্রপিক চলন।</i></small></blockquote>
+            </li>
+            <li>
+                <p>সুন্দরীগাছের শ্বাসমূল মাটির ওপরে উঠে আসে- এটি কোন্ প্রকার চলন?</p>
+                <ol class="options-list">
+                    <li>অনুকূল জলবৃত্তীয় চলন</li>
+                    <li>অনুকূল অভিকর্ষবৃত্তীয় চলন</li>
+                    <li>প্রতিকূল অভিকর্ষবৃত্তীয় চলন</li>
+                    <li>প্রতিকূল আলোকবৃত্তীয় চলন</li>
+                </ol>
+                <blockquote><strong>উত্তর: (c) প্রতিকূল অভিকর্ষবৃত্তীয় চলন।</strong><br><small><i>ব্যাখ্যা: লবণাক্ত ও কর্দমাক্ত মাটিতে অক্সিজেনের অভাব মেটানোর জন্য সুন্দরী গাছের শ্বাসমূল (নিউম্যাটোফোর) অভিকর্ষের বিপরীতে অর্থাৎ মাটির উপরে উঠে আসে। তাই এটি প্রতিকূল অভিকর্ষবৃত্তীয় বা নেগেটিভ জিওট্রপিক চলন।</i></small></blockquote>
+            </li>
+            <li>
+                <p>নীচের যে জীবটি গমনে সক্ষম তা হল-</p>
+                <ol class="options-list">
+                    <li>মিউকর</li>
+                    <li>পেনিসিলিয়াম</li>
+                    <li>ঈস্ট</li>
+                    <li>ক্ল্যামাইডোমোনাস</li>
+                </ol>
+                <blockquote><strong>উত্তর: (d) ক্ল্যামাইডোমোনাস।</strong><br><small><i>ব্যাখ্যা: ক্ল্যামাইডোমোনাস একটি এককোষী শৈবাল যার দুটি ফ্ল্যাজেলা থাকে। এই ফ্ল্যাজেলার সাহায্যে এটি জলে সাঁতার কেটে স্থান পরিবর্তন করতে পারে, অর্থাৎ গমনে সক্ষম।</i></small></blockquote>
+            </li>
+            <li>
+                <p>অভিকর্ষ প্রতিকূলবর্তী মূল কাদের দেখা যায়?</p>
+                <ol class="options-list">
+                    <li>হ্যালোফাইট</li>
+                    <li>জেরোফাইট</li>
+                    <li>হাইড্রোফাইট</li>
+                    <li>সবগুলি</li>
+                </ol>
+                <blockquote><strong>উত্তর: (a) হ্যালোফাইট।</strong><br><small><i>ব্যাখ্যা: হ্যালোফাইট বা লবণাম্বু উদ্ভিদ (যেমন - সুন্দরী, গরান) লবণাক্ত ও কর্দমাক্ত মাটিতে জন্মায়। এই মাটিতে অক্সিজেনের অভাব থাকায় এদের মূল অভিকর্ষের বিপরীতে বৃদ্ধি পেয়ে শ্বাসমূল বা নিউম্যাটোফোর গঠন করে।</i></small></blockquote>
+            </li>
+            <li>
+                <p>বনচাঁড়ালের পার্শ্বপত্রে দেখা যায়-</p>
+                <ol class="options-list">
+                    <li>জিওট্রপিক চলন</li>
+                    <li>প্রকরণ চলন</li>
+                    <li>ফোটোন্যাস্টিক চলন</li>
+                    <li>সিমোন্যাস্টিক চলন</li>
+                </ol>
+                <blockquote><strong>উত্তর: (b) প্রকরণ চলন।</strong><br><small><i>ব্যাখ্যা: বনচাঁড়াল উদ্ভিদের ত্রিফলকের পাশের দুটি ছোটো পত্রক রসস্ফীতি চাপের তারতম্যের জন্য পর্যায়ক্রমে ওঠানামা করে। এটি একটি স্বতঃস্ফূর্ত বক্র চলন, যা প্রকরণ চলন (Movement of Variation) নামে পরিচিত।</i></small></blockquote>
+            </li>
+            <li>
+                <p>টিউলিপ ফুলের উন্মোচন হল একপ্রকার-</p>
+                <ol class="options-list">
+                    <li>ফোটোন্যাস্টিক চলন</li>
+                    <li>নিকটিন্যাস্টিক চলন</li>
+                    <li>থার্মোন্যাস্টিক চলন</li>
+                    <li>কেমোন্যাস্টিক চলন</li>
+                </ol>
+                <blockquote><strong>উত্তর: (c) থার্মোন্যাস্টিক চলন।</strong><br><small><i>ব্যাখ্যা: টিউলিপ ফুল বেশি উষ্ণতায় ফোটে এবং কম উষ্ণতায় বন্ধ হয়ে যায়। উষ্ণতার তীব্রতা দ্বারা নিয়ন্ত্রিত এই ন্যাস্টিক চলনকে থার্মোন্যাস্টিক চলন বলে।</i></small></blockquote>
+            </li>
+            <li>
+                <p>পারিপার্শ্বিকের যে কারণের প্রভাবে জীবদেহে প্রতিক্রিয়ার সৃষ্টি হয়, তাকে বলে-</p>
+                <ol class="options-list">
+                    <li>সাড়া</li>
+                    <li>উত্তেজিতা / সংবেদনশীলতা</li>
+                    <li>কারক</li>
+                    <li>উদ্দীপক</li>
+                </ol>
+                <blockquote><strong>উত্তর: (d) উদ্দীপক।</strong><br><small><i>ব্যাখ্যা: পরিবেশের যে সমস্ত পরিবর্তন (যেমন - আলো, তাপ, চাপ, রাসায়নিক পদার্থ) জীব শনাক্ত করতে পারে এবং তার প্রভাবে সাড়া প্রদান করে, সেই পরিবর্তনগুলিকে উদ্দীপক বলে।</i></small></blockquote>
+            </li>
+            <li>
+                <p>উদ্দীপকের প্রভাবে সৃষ্ট প্রতিক্রিয়াকে বলে-</p>
+                <ol class="options-list">
+                    <li>সাড়া</li>
+                    <li>উত্তেজিতা</li>
+                    <li>কারক</li>
+                    <li>উদ্দীপক</li>
+                </ol>
+                <blockquote><strong>উত্তর: (a) সাড়া।</strong><br><small><i>ব্যাখ্যা: উদ্দীপকের প্রভাবে জীবদেহে যে প্রতিক্রিয়া বা পরিবর্তন লক্ষ্য করা যায়, তাকেই সাড়া বলে। যেমন - গরম বস্তুতে হাত লাগলে হাত সরিয়ে নেওয়া একটি সাড়া।</i></small></blockquote>
+            </li>
+            <li>
+                <p>সংবেদনশীলতা দেখা যায় হয়-</p>
+                <ol class="options-list">
+                    <li>কেবল প্রাণীতে</li>
+                    <li>কেবল উদ্ভিদে</li>
+                    <li>প্রাণী এবং উদ্ভিদ উভয়েই</li>
+                    <li>এদের কোনোটিতেই নয়</li>
+                </ol>
+                <blockquote><strong>উত্তর: (c) প্রাণী এবং উদ্ভিদ উভয়েই।</strong><br><small><i>ব্যাখ্যা: সংবেদনশীলতা বা উত্তেজিতা হলো জীবের একটি মৌলিক ধর্ম। প্রাণী এবং উদ্ভিদ উভয়ই বিভিন্ন উদ্দীপকের প্রভাবে সাড়া প্রদান করতে পারে, তাই উভয়ের মধ্যেই সংবেদনশীলতা দেখা যায়।</i></small></blockquote>
+            </li>
+            <li>
+                <p>নীচের যে উদ্ভিদটিতে সংবেদনশীলতা ভালো করে বোঝা যায়, সেটি হল-</p>
+                <ol class="options-list">
+                    <li>কচুরিপানা</li>
+                    <li>স্থলপদ্ম</li>
+                    <li>লজ্জাবতী লতা</li>
+                    <li>বাসক</li>
+                </ol>
+                <blockquote><strong>উত্তর: (c) লজ্জাবতী লতা।</strong><br><small><i>ব্যাখ্যা: লজ্জাবতী লতাকে স্পর্শ করলে তার পাতা দ্রুত মুড়ে যায়। এই প্রতিক্রিয়াটি খুব স্পষ্ট এবং দ্রুত হওয়ায় এর সংবেদনশীলতা খুব সহজে বোঝা যায়।</i></small></blockquote>
+            </li>
+            <li>
+                <p>উদ্ভিদের সংবেদনশীলতা সংক্রান্ত আবিষ্কারের সঙ্গে যুক্ত বিজ্ঞানী হলেন-</p>
+                <ol class="options-list">
+                    <li>ড. সি ভি রমন</li>
+                    <li>আচার্য প্রফুল্ল চন্দ্র রায়</li>
+                    <li>ড. এডওয়ার্ড জেনার</li>
+                    <li>আচার্য জগদীশ চন্দ্ৰ বোস</li>
+                </ol>
+                <blockquote><strong>উত্তর: (d) আচার্য জগদীশ চন্দ্ৰ বোস।</strong><br><small><i>ব্যাখ্যা: বিজ্ঞানী আচার্য জগদীশ চন্দ্র বসু প্রথম ক্রেসকোগ্রাফ যন্ত্রের সাহায্যে প্রমাণ করেন যে, উদ্ভিদেরও প্রাণীর মতো সংবেদনশীলতা আছে এবং তারা বাহ্যিক উদ্দীপকের প্রভাবে সাড়া দেয়।</i></small></blockquote>
+            </li>
+            <li>
+                <p>নীচের যেটি উদ্ভিদের সাড়াপ্রদানে বাহ্যিক উদ্দীপক নয়-</p>
+                <ol class="options-list">
+                    <li>বিষ</li>
+                    <li>হরমোন</li>
+                    <li>উত্তাপ</li>
+                    <li>স্পর্শ</li>
+                </ol>
+                <blockquote><strong>উত্তর: (b) হরমোন।</strong><br><small><i>ব্যাখ্যা: বিষ, উত্তাপ এবং স্পর্শ হলো পরিবেশের বাহ্যিক উদ্দীপক। কিন্তু হরমোন উদ্ভিদের দেহের ভিতরেই উৎপন্ন হয় এবং বিভিন্ন শারীরবৃত্তীয় কাজ নিয়ন্ত্রণ করে, তাই এটি একটি অভ্যন্তরীণ উদ্দীপক।</i></small></blockquote>
+            </li>
+            <li>
+                <p>নীচের যে উদ্ভিদটির ত্রিফলক পত্রের, দুটি পত্রক পর্যায়ক্রমিকভাবে ওঠা-নামা করতে পারে, সেটি হল-</p>
+                <ol class="options-list">
+                    <li>সুন্দরী উদ্ভিদ</li>
+                    <li>পদ্ম</li>
+                    <li>বনচাঁড়াল</li>
+                    <li>তুলসী</li>
+                </ol>
+                <blockquote><strong>উত্তর: (c) বনচাঁড়াল।</strong><br><small><i>ব্যাখ্যা: বনচাঁড়াল (Indian Telegraph Plant) উদ্ভিদের যৌগিক পত্রের তিনটি ফলকের মধ্যে পাশের দুটি ছোটো পত্রক দিনের বেলায় রসস্ফীতিজনিত চাপের তারতম্যের কারণে স্বতঃস্ফূর্তভাবে ওঠানামা করে। এই চলনকে প্রকরণ চলন বলে।</i></small></blockquote>
+            </li>
+            <li>
+                <p>উদ্ভিদের সাড়া পরিমাপক যন্ত্রটি হল-</p>
+                <ol class="options-list">
+                    <li>ক্রেসকোগ্রাফ</li>
+                    <li>আর্কমিটার</li>
+                    <li>সিসমোগ্রাফ</li>
+                    <li>হাইগ্রোমিটার</li>
+                </ol>
+                <blockquote><strong>উত্তর: (a) ক্রেসকোগ্রাফ।</strong><br><small><i>ব্যাখ্যা: আচার্য জগদীশ চন্দ্র বসু উদ্ভিদের বৃদ্ধি এবং বাহ্যিক উদ্দীপকের প্রতি সাড়া পরিমাপ করার জন্য ক্রেসকোগ্রাফ যন্ত্র আবিষ্কার করেন।</i></small></blockquote>
+            </li>
+            <li>
+                <p>প্রকরণ চলনের জন্য দায়ী হল-</p>
+                <ol class="options-list">
+                    <li>কোশের সংখ্যা বৃদ্ধি</li>
+                    <li>কোশের রসস্ফীতি চাপের তারতম্য</li>
+                    <li>কোশের মধ্যে ভ্যাকুওলের সংখ্যা বৃদ্ধি</li>
+                    <li>কোশের মধ্যে উষ্ণতার তারতম্য</li>
+                </ol>
+                <blockquote><strong>উত্তর: (b) কোশের রসস্ফীতি চাপের তারতম্য।</strong><br><small><i>ব্যাখ্যা: বনচাঁড়াল উদ্ভিদের পত্রবৃন্তের গোড়ায় অবস্থিত পালভিনাস (Pulvinus) বা উপবৃন্তের কোষে রসস্ফীতি চাপের পর্যায়ক্রমিক পরিবর্তনের (Turgor pressure changes) ফলেই প্রকরণ চলন ঘটে।</i></small></blockquote>
+            </li>
+            <li>
+                <p>ফোটোন্যাস্টিক চলন দেখা যায়-</p>
+                <ol class="options-list">
+                    <li>সূর্যমুখী ফুলে</li>
+                    <li>পতঙ্গভুক উদ্ভিদে</li>
+                    <li>লজ্জাবতী লতায়</li>
+                    <li>কোনোটিতেই নয়</li>
+                </ol>
+                <blockquote><strong>উত্তর: (a) সূর্যমুখী ফুলে।</strong><br><small><i>ব্যাখ্যা: সূর্যমুখী, পদ্ম ইত্যাদি ফুলের প্রস্ফুটন আলোর তীব্রতা দ্বারা নিয়ন্ত্রিত হয়। তাই এদের চলন ফোটোন্যাস্টিক চলনের উদাহরণ।</i></small></blockquote>
+            </li>
+            <li>
+                <p>ক্রেসকোগ্রাফ যন্ত্র নিয়ে কাজ করেছিলেন বিজ্ঞানী-</p>
+                <ol class="options-list">
+                    <li>সত্যেন্দ্রনাথ বোস</li>
+                    <li>জগদীশ চন্দ্র বসু</li>
+                    <li>প্রফুল্লচন্দ্র রায়</li>
+                    <li>নিউটন</li>
+                </ol>
+                <blockquote><strong>উত্তর: (b) জগদীশ চন্দ্র বসু।</strong><br><small><i>ব্যাখ্যা: বিজ্ঞানী জগদীশ চন্দ্র বসু ক্রেসকোগ্রাফ যন্ত্রের আবিষ্কারক এবং এই যন্ত্র ব্যবহার করে তিনি উদ্ভিদের সংবেদনশীলতা ও বৃদ্ধি সংক্রান্ত যুগান্তকারী গবেষণা করেন।</i></small></blockquote>
+            </li>
+            <li>
+                <p>উদ্ভিদের যে চলন জলের উৎসের গতিপথ দ্বারা নির্ণীত, তাকে বলে-</p>
+                <ol class="options-list">
+                    <li>জিওট্রপিক</li>
+                    <li>ফোটোট্যাকটিক</li>
+                    <li>হাইড্রোট্রপিক</li>
+                    <li>হাইড্রোট্যাকটিক</li>
+                </ol>
+                <blockquote><strong>উত্তর: (c) হাইড্রোট্রপিক।</strong><br><small><i>ব্যাখ্যা: উদ্ভিদ অঙ্গের (বিশেষত মূলের) চলন যখন জলের উৎসের গতিপথ দ্বারা নিয়ন্ত্রিত হয়, তখন তাকে হাইড্রোট্রপিক বা জলবৃত্তীয় চলন বলে। মূল সর্বদা জলের উৎসের দিকে বৃদ্ধি পায়।</i></small></blockquote>
+            </li>
+            <li>
+                <p>পরাগনালির বৃদ্ধি কী প্রকার চলন?</p>
+                <ol class="options-list">
+                    <li>কেমোট্রপিক</li>
+                    <li>কেমোন্যাস্টিক</li>
+                    <li>কেমোট্যাকটিক</li>
+                    <li>এগুলির কোনোটাই নয়</li>
+                </ol>
+                <blockquote><strong>উত্তর: (a) কেমোট্রপিক।</strong><br><small><i>ব্যাখ্যা: পরাগরেণু গর্ভমুন্ডে পতিত হওয়ার পর ডিম্বকের রাসায়নিক পদার্থের (যেমন- শর্করা) প্রভাবে ডিম্বকের দিকে পরাগনালি গঠন করে বৃদ্ধি পায়। রাসায়নিকের গতিপথ দ্বারা নিয়ন্ত্রিত এই প্রকার চলন হলো কেমোট্রপিক চলন।</i></small></blockquote>
+            </li>
+            <li>
+                <p>যে সকল রেণু গমনে সক্ষম তাদেরকে বলা হয়</p>
+                <ol class="options-list">
+                    <li>কনিডিয়া</li>
+                    <li>অ্যাপ্লানোস্পোর</li>
+                    <li>জুস্পোর</li>
+                    <li>ওইডিয়া</li>
+                </ol>
+                <blockquote><strong>উত্তর: (c) জুস্পোর।</strong><br><small><i>ব্যাখ্যা: ফ্ল্যাজেলাযুক্ত, সচল বা গমনক্ষম রেণুকে জুস্পোর বা চলরেণু বলা হয়। এগুলি সাধারণত শৈবাল ও ছত্রাকের মধ্যে দেখা যায়।</i></small></blockquote>
+            </li>
+            <li>
+                <p>পতঙ্গভুক উদ্ভিদের চলন হল-</p>
+                <ol class="options-list">
+                    <li>কেমোন্যাস্টিক চলন</li>
+                    <li>কেমোট্যাকটিক চলন</li>
+                    <li>কেমোট্রপিক চলন</li>
+                    <li>কোনোটিই নয়</li>
+                </ol>
+                <blockquote><strong>উত্তর: (a) কেমোন্যাস্টিক চলন।</strong><br><small><i>ব্যাখ্যা: পতঙ্গভুক উদ্ভিদের পাতা বা কর্ষিকা পতঙ্গের দেহের প্রোটিনের (রাসায়নিক পদার্থ) সংস্পর্শে এলে উদ্দীপিত হয় এবং পতঙ্গকে আবদ্ধ করে। এটি উদ্দীপকের তীব্রতা দ্বারা নিয়ন্ত্রিত হয়, তাই এটি কেমোন্যাস্টিক চলন।</i></small></blockquote>
+            </li>
+             <li>
+                <p>নীচের যে জীবটিতে সামগ্রিক চলন দেখা যায়-</p>
+                <ol class="options-list">
+                    <li>মিউকর-এ</li>
+                    <li>ভলভক্স-এ</li>
+                    <li>মিক্সোমাইসিটিস-এ</li>
+                    <li>বনচাঁড়ালে</li>
+                </ol>
+                <blockquote><strong>উত্তর: (b) ভলভক্স-এ।</strong><br><small><i>ব্যাখ্যা: ভলভক্স হলো একটি কলোনিয়াল শৈবাল যা ফ্ল্যাজেলার সাহায্যে সামগ্রিকভাবে স্থান পরিবর্তন বা গমন করতে পারে। মিউকর ও বনচাঁড়াল গমনে অক্ষম এবং মিক্সোমাইসিটিস অ্যামিবয়েড গমন দেখায়। ভলভক্স একটি সুস্পষ্ট উদাহরণ।</i></small></blockquote>
+            </li>
+        </ol>
+        <h2>ধন্যবাদ</h2>
+    </div>
+
+    <nav class="navigation">
+        <a href="class2.html" class="nav-button">পূর্ববর্তী</a>
+        <a href="class1.html" class="nav-button">1</a>
+        <a href="class2.html" class="nav-button">2</a>
+        <a href="class3.html" class="nav-button active">3</a>
+        <a href="#" class="nav-button disabled">পরবর্তী</a>
+        <a href="../index.html" class="nav-button home-button">Home</a>
+    </nav>
+    
+    <footer>
+        <p>কপিরাইট © <span id="copyright-year"></span> - সর্বস্বত্ব সংরক্ষিত।</p>
+        <p>ডিজাইন ও ডেভেলপমেন্ট: <strong>কেশব সরকার</strong></p>
+    </footer>
+
+    <button id="scrollToTopBtn" class="scroll-button" title="উপরে যান">↑</button>
+    <button id="scrollToBottomBtn" class="scroll-button" title="নিচে যান">↓</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeButtons = document.querySelectorAll('.theme-buttons button');
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const body = document.body;
+            function applyTheme(theme) { body.dataset.theme = theme; localStorage.setItem('selected_theme', theme); }
+            function applyMode(mode) { if (mode === 'dark') { body.classList.add('dark-mode'); darkModeToggle.checked = true; } else { body.classList.remove('dark-mode'); darkModeToggle.checked = false; } localStorage.setItem('selected_mode', mode); }
+            const savedTheme = localStorage.getItem('selected_theme');
+            const savedMode = localStorage.getItem('selected_mode');
+            if (savedTheme) applyTheme(savedTheme);
+            if (savedMode) applyMode(savedMode);
+            themeButtons.forEach(button => { button.addEventListener('click', () => { applyTheme(button.dataset.themeName); }); });
+            darkModeToggle.addEventListener('change', () => { applyMode(darkModeToggle.checked ? 'dark' : 'light'); });
+
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            const scrollToBottomBtn = document.getElementById('scrollToBottomBtn');
+            window.addEventListener('scroll', () => {
+                const scrollPosition = window.scrollY;
+                const windowHeight = window.innerHeight;
+                const bodyHeight = document.body.offsetHeight;
+                if (scrollPosition > 200) { scrollToTopBtn.style.display = 'flex'; } else { scrollToTopBtn.style.display = 'none'; }
+                if (scrollPosition + windowHeight < bodyHeight - 100) { scrollToBottomBtn.style.display = 'flex'; } else { scrollToBottomBtn.style.display = 'none'; }
+            });
+            scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            scrollToBottomBtn.addEventListener('click', () => { window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); });
+
+            const clockElement = document.getElementById('digital-clock');
+            function updateClock() {
+                if(clockElement) {
+                    const now = new Date();
+                    const options = {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit',
+                        hour12: true,
+                        timeZone: 'Asia/Kolkata'
+                    };
+                    clockElement.textContent = now.toLocaleTimeString('en-GB', options);
+                }
+            }
+            updateClock();
+            setInterval(updateClock, 1000);
+
+            const yearSpan = document.getElementById('copyright-year');
+            if(yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>
